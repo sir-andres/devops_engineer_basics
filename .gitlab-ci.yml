@@ -1,0 +1,35 @@
+stages:
+    - test
+    - build
+    - deploy
+
+unit test:
+    stage: test
+    script:
+        - echo "test 1"
+        
+linter:
+    stage: test
+    script:
+        - echo "test 2"
+      
+type test:
+    stage: test
+    script:
+        - echo "test 3"
+
+build:
+    stage: build
+    script:
+        - ./build.sh
+    when: manual
+
+test_after_build:
+   stage: test
+   script: "echo test after build ready"
+
+deploy job:
+  stage: deploy
+  script:
+        - ./deploy.sh
+  when: manual
