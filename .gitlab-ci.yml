@@ -25,7 +25,7 @@ build:
     when: manual
 
 test_after_build:
-   stage: test
+   stage: test2
    script: "echo test after build ready"
 
 deploy job:
