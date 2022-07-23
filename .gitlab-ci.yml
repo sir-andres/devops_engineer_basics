@@ -42,4 +42,4 @@ prod:
   stage: prod
   script:
         - ./deploy.sh
-    when: manual
+  when: manual
