@@ -1,21 +1,22 @@
 stages:
-    - test
+    - syntax
     - build
-    - test2
-    - deploy
+    - test
+    - stage
+    - prod
 
 unit test:
-    stage: test
+    stage: syntax
     script:
         - echo "test 1"
         
 linter:
-    stage: test
+    stage: syntax
     script:
         - echo "test 2"
       
 type test:
-    stage: test
+    stage: syntax
     script:
         - echo "test 3"
 
@@ -23,14 +24,22 @@ build:
     stage: build
     script:
         - ./build.sh
-    when: manual
 
-test_after_build:
-   stage: test2
-   script: "echo test after build ready"
+autotest:
+   stage: test
+   script: "echo autotest ready"
 
-deploy job:
-  stage: deploy
+selenium:
+   stage: test
+   script: "echo selenium ready"
+
+deploy to stage:
+  stage: stage
   script:
         - ./deploy.sh
-  when: manual
+
+prod:
+  stage: prod
+  script:
+        - ./deploy.sh
+    when: manual
