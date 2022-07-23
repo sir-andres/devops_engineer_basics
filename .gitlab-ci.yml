@@ -8,22 +8,22 @@ stages:
 unit test:
     stage: syntax
     script:
-        - echo "test 1"
+        - echo "test 1 ------------"
         
 linter:
     stage: syntax
     script:
-        - echo "test 2"
+        - echo "test 2 ------------"
       
 type test:
     stage: syntax
     script:
-        - echo "test 3"
+        - echo "test 3 ------------"
 
 build:
     stage: build
     script:
-        - ./build.sh
+        - echo 'running ./build.sh'
 
 autotest:
    stage: test
@@ -36,7 +36,7 @@ selenium:
 deploy to stage:
   stage: stage
   script:
-        - ./deploy.sh
+        - echo 'running ./deploy.sh'
 
 prod:
   stage: prod
