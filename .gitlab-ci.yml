@@ -37,9 +37,19 @@ deploy to stage:
   stage: stage
   script:
         - echo 'running ./deploy.sh'
+  only:
+    refs:
+        - tag
+        - main
+        - /ˆˆrelease.*$/
 
 prod:
   stage: prod
   script:
         - ./deploy.sh
+  only:
+    refs:
+        - tag
+        - main
+        - /ˆˆrelease.*$/
   when: manual
