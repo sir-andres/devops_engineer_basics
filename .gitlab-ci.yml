@@ -46,7 +46,7 @@ deploy website:
         - main
         - /ˆˆrelease.*$/
 
-prod:
+deploy to prod:
   stage: prod
   script:
         - ./deploy.sh
