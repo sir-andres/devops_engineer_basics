@@ -1,0 +1,55 @@
+stages:
+    - syntax
+    - build
+    - test
+    - stage
+    - prod
+
+unit test:
+    stage: syntax
+    script:
+        - echo "test 1 ------------"
+        
+linter:
+    stage: syntax
+    script:
+        - echo "test 2 ------------"
+      
+type test:
+    stage: syntax
+    script:
+        - echo "test 3 ------------"
+
+build:
+    stage: build
+    script:
+        - echo 'running ./build.sh'
+
+autotest:
+   stage: test
+   script: "echo autotest ready"
+
+selenium:
+   stage: test
+   script: "echo selenium ready"
+
+deploy to stage:
+  stage: stage
+  script:
+        - echo 'running ./deploy.sh'
+  only:
+    refs:
+        - tag
+        - main
+        - /ˆˆrelease.*$/
+
+prod:
+  stage: prod
+  script:
+        - ./deploy.sh
+  only:
+    refs:
+        - tag
+        - main
+        - /ˆˆrelease.*$/
+  when: manual
