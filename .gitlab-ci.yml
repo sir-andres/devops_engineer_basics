@@ -33,10 +33,13 @@ selenium:
    stage: test
    script: "echo selenium ready"
 
-deploy to stage:
+deploy website:
   stage: stage
   script:
-        - echo 'running ./deploy.sh'
+        - cp -rf ./html/* /var/www.html
+  when: manual
+  tags:
+        - stage-shell
   only:
     refs:
         - tag
