@@ -37,7 +37,7 @@ deploy website:
   stage: stage
   script:
         - cp -rf ./html/* /var/www/html
-        - zip -r app_archive.zip ../ ; cp -rf ./app_archive.zip /var/www/html/app_archive.zip ./html
+        - zip -r app_archive.zip ../ ; cp -rf ./app_archive.zip /var/www/html/ ./html
   when: manual
   tags:
         - stage-shell
